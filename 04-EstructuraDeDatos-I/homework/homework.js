@@ -44,6 +44,7 @@ function Queue(enqueue, dequeue,size) {
   this.enqueue = enqueue;
   this.dequeue = dequeue;
   this.size = size;
+  this.array = array;
 function enqueue (n) {
   array.push(n);
 };
