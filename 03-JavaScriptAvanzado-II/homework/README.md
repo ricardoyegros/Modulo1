@@ -17,6 +17,13 @@ Crear un método `repeatify` que este disponible para _todos_ los objetos `Strin
 
 ```javascript
 console.log('hola'.repeatify(3));   //holaholahola
+String.prototype.repetify = function (n) {
+    if (n <= 0) {
+        console.log("");
+    } else {
+        console.log(this.repeat(n));
+    }
+}
 ```
 
 ### Shapes
@@ -24,6 +31,14 @@ console.log('hola'.repeatify(3));   //holaholahola
 * Crea un objeto llamado `shape` que tenga una propiedad `type` y un método `getType`.
 * Ahora defini una función `Triangle` cuyo prototipo sea `shape`. Los objetos creados con `Triangle` deberían tener tres propiedades: `a`, `b` y `c`. Que representan cada lado del triángulo. `type` debe ser `Triangle`.
 * Agregá un nuevo método al prototipo llamado `getPerimeter`.
+
+let shape = new Object;
+shape.type;
+shape.getType = function () {
+
+}
+function Triangle ();
+
 
 Probá tu solución con el siguiente código:
 

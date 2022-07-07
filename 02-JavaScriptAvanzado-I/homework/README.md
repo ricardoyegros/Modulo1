@@ -24,15 +24,15 @@ var c = function(a, b, c) {
   f(a,b,c);
   console.log(b);
 }
-c(8,9,10);
-console.log(b);
-console.log(x);
+c(8,9,10); // 10, 8, 8, 9
+console.log(b); // 10
+console.log(x); // 1
 ```
 
 ```javascript
-console.log(bar);
-console.log(baz);
-foo();
+console.log(bar); // undefined
+console.log(baz); // error
+foo(); // hola
 function foo() { console.log('Hola!'); }
 var bar = 1;
 baz = 2;
@@ -43,19 +43,19 @@ var instructor = "Tony";
 if(true) {
     var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor); // "Franco"
 ```
 
 ```javascript
 var instructor = "Tony";
-console.log(instructor);
+console.log(instructor); // "Tony"
 (function() {
    if(true) {
-      var instructor = "Franco";
-      console.log(instructor);
+      var instructor = "Franco"; 
+      console.log(instructor); // "Franco"
    }
 })();
-console.log(instructor);
+console.log(instructor);// "Tony"
 ```
 
 ```javascript
@@ -64,33 +64,33 @@ let pm = "Franco";
 if (true) {
     var instructor = "The Flash";
     let pm = "Reverse Flash";
-    console.log(instructor);
-    console.log(pm);
+    console.log(instructor);// "The Flash"
+    console.log(pm);// "Reverse Flash"
 }
-console.log(instructor);
-console.log(pm);
+console.log(instructor); // "The Flash"
+console.log(pm); // Franco
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3" // 2
+"2" * "3" // 6
+4 + 5 + "px" // 9px
+"$" + 4 + 5 // "$45"
+"4" - 2 // 2
+"4px" - 2 // NaN
+7 / 0 // Infinito
+{}[0] // 0 ??
+parseInt("09") // 9
+5 && 2 // 2
+2 && 5 // 5
+5 || 0 // 5
+0 || 5 // 5
+[3]+[3]-[10] // 23
+3>2>1 // false
+[] == ![] // true ?? 
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -111,7 +111,7 @@ function test() {
    }
 }
 
-test();
+test(); // undefined y 2. Da "undefined porque busca a "a" en el contexto global, diferente seria si "a" estuviera declarada con let en ese caso daria un error porque no puede acceder a "a" antes de su declaracion" y tambien imprime dos porque accede a la funcion foo() que contiene el retorno a 2 dentro.
 ```
 
 Y el de este código? :
@@ -127,7 +127,7 @@ function getFood(food) {
     return snack;
 }
 
-getFood(false);
+getFood(false); // Undefined porque no entra al if por ser falso, caso contrario imprimiria "Friskies"
 ```
 
 
@@ -147,11 +147,11 @@ var obj = {
    }
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); // ??
 
-var test = obj.prop.getFullname;
+var test = obj.prop.getFullname; 
 
-console.log(test());
+console.log(test()); // ??
 ```
 
 ### Event loop
@@ -166,5 +166,5 @@ function printing() {
    console.log(4);
 }
 
-printing();
+printing(); // 1, 4, 3, 2 . Porque se va a aplicar la teoria del Event Loop, va a comenzar en orden imprimiendo la linea que contiene al console.log(1), luego va a pasar al Event Loop ambas funciones de setTimeout y continuara imprimiendo la linea que tiene el console.log(4), luego imprime el 3 porque esta seteado en menos tiempo y por ultimo imprime el 2,
 ```
